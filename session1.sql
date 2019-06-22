@@ -1,0 +1,7 @@
+BEGIN
+	--DATETIME
+	SELECT sysdatetimeoffset(),
+		SYSUTCDATETIME()
+
+	SELECT SWITCHOFFSET(getdate(), '-03:00')
+END
