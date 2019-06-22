@@ -1,0 +1,40 @@
+Instale o Docker
+
+Para manter a execução do Daemon CTRL+Alt+T para abrir o terminal rápido execute:
+	sudo dockerd
+E pode sair da tela que o terminal irá permanecer executando
+
+Criar docker sqlserver
+	sudo docker run -e ACCEPT_EULA=Y -e SA_PASSWORD=<Senha com Maiuc Minusc Numero> -p 1433:1433 --name vini-sqlserver -d microsoft/mssql-server-linux:2017-latest
+
+Para verificar quais Containers estão instalados
+	sudo docker images
+
+Para verificar quais Containers estão executando
+	sudo docker ps
+
+Iniciar o container do SQL Server
+	sudo docker start vini-sqlserver
+	-- ou nome que deu quando criou o container
+
+Busque e instale pelo azuredatastudio - Sql Studio OpenSource
+	Conecte ao servidor 127.0.0.1
+	user: sa
+	senha: definida acima
+
+Para conectar de outra maquina temos que liberar o acesso a rede externa
+	First enable IP forwarding in the kernel:
+	~sudo sysctl net.ipv4.conf.all.forwarding=1
+
+	Then change the host firewall to allow the forwarding
+	~sudo iptables -P FORWARD ACCEPT
+	
+	Dessa forma o docker irá estar disponivel para fora da maquina
+
+Para descobrir o IP da maquina execute
+	ip route
+	procure algum que diga 'link src'
+
+Usario já criado:
+	vinicio
+	<>
