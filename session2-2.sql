@@ -1042,3 +1042,15 @@ values
 -- , ('1123', 'Carol Ann', 'F.', 'Abercrombie', 'ZX166875U', '1972-01-07', 'HR')
 -- , ('1124', 'Scott', 'M.', 'Abel', 'XQ643110Z', '1982-08-16', 'Customer Relations')
 -- , ('1125', 'Jim', '', 'Abbas', 'CI923373U', '1966-01-22', 'Customer Relations')
+
+
+
+SELECT
+    DATEName(month, DateOfBirth) as DateOfBirth,
+    count(EmployeeNumber) as EmployeeNumber
+FROM   
+    tblEmployee
+GROUP by    
+    DATEName(month, DateOfBirth)
+order BY    
+    DATEPart(month, DateOfBirth)
